@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Name — Minimal Site</title>
+  <meta name="description" content="One-page, hyper minimalist website." />
+  <meta name="color-scheme" content="light dark" />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --fg: #0a0a0a;
+      --muted: #6b7280; /* gray-500 */
+      --accent: #111827; /* gray-900 */
+      --maxw: 44rem;
+      --pad: clamp(16px, 4vw, 32px);
+      --radius: 16px;
+      --gap: clamp(16px, 4vw, 28px);
+      --lead: 1.6;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b0c0e;
+        --fg: #e5e7eb;
+        --muted: #9ca3af;
+        --accent: #f9fafb;
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font: 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    .wrap {
+      min-height: 100dvh;
+      display: grid;
+      place-items: center;
+      padding: var(--pad);
+    }
+
+    main {
+      width: 100%;
+      max-width: var(--maxw);
+      display: grid;
+      gap: var(--gap);
+    }
+
+    header {
+      display: grid;
+      gap: 8px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(28px, 5vw, 56px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+
+    .tag {
+      display: inline-block;
+      color: var(--muted);
+      font-size: clamp(14px, 2.2vw, 16px);
+    }
+
+    .lead {
+      margin: 0;
+      font-size: clamp(16px, 2.4vw, 20px);
+      line-height: var(--lead);
+      color: var(--fg);
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 16px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      position: relative;
+    }
+
+    /* Subtle underline that animates in */
+    a.link { padding-bottom: 2px; }
+    a.link::after {
+      content: "";
+      position: absolute;
+      left: 0; bottom: 0;
+      width: 100%; height: 1px;
+      background: currentColor;
+      opacity: 0.2;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .25s ease;
+    }
+    a.link:focus-visible::after,
+    a.link:hover::after { transform: scaleX(1); }
+
+    hr {
+      height: 1px; border: 0; background: color-mix(in lch, var(--fg) 14%, transparent);
+      margin: 4px 0 0;
+    }
+
+    footer {
+      color: var(--muted);
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    /* Optional card for a single project or note */
+    .card {
+      border: 1px solid color-mix(in lch, var(--fg) 12%, transparent);
+      border-radius: var(--radius);
+      padding: clamp(14px, 3vw, 22px);
+    }
+
+    /* Print: keep it elegant */
+    @media print {
+      nav, footer { display: none; }
+      main { max-width: 42rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <main>
+      <header>
+        <h1>Your Name</h1>
+        <span class="tag">Your Role • City, ST</span>
+      </header>
+
+      <p class="lead">One or two crisp sentences about what you do and what you care about. Keep it concrete and short. No fluff, no buzzwords.</p>
+      <!-- Optional "links row" -->
+      <nav aria-label="primary">
+        <a class="link" href="#" target="_blank" rel="noopener">Email</a>
+        <a class="link" href="#" target="_blank" rel="noopener">GitHub</a>
+        <a class="link" href="#" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="link" href="#" target="_blank" rel="noopener">Resume</a>
+      </nav>
+
+      <!-- Documents -->
+      <section aria-label="documents">
+        <h2 style="margin:0;font-size:clamp(18px,2.6vw,22px);letter-spacing:-.01em">Documents</h2>
+        <p class="tag">Large PDFs (≈150&nbsp;MB each) — will open in a new tab.</p>
+        <ul style="list-style:none; padding:0; margin: 8px 0 0; display:grid; gap:8px">
+          <!-- Replace the href values below with your real URLs. If hosting on GitHub Releases, they will look like:
+               https://github.com/<user>/<repo>/releases/download/v1.0/<file>.pdf -->
+          <li><a class="link" href="https://github.com/USER/REPO/releases/download/v1.0/document-1.pdf" target="_blank" rel="noopener" type="application/pdf">Document Title One <span class="tag">(PDF, ~150&nbsp;MB)</span></a></li>
+          <li><a class="link" href="https://github.com/USER/REPO/releases/download/v1.0/document-2.pdf" target="_blank" rel="noopener" type="application/pdf">Document Title Two <span class="tag">(PDF, ~150&nbsp;MB)</span></a></li>
+          <li><a class="link" href="https://github.com/USER/REPO/releases/download/v1.0/document-3.pdf" target="_blank" rel="noopener" type="application/pdf">Document Title Three <span class="tag">(PDF, ~150&nbsp;MB)</span></a></li>
+        </ul>
+      </section
+
+      <!-- Optional single highlight block -->
+      <section class="card" aria-label="highlight">
+        <strong>Current focus</strong>
+        <hr />
+        <p style="margin:.5rem 0 0">A single, short paragraph about what you’re working on now. Link to one thing if you must—no more than one.</p>
+      </section>
+
+      <footer>
+        <span>© <span id="y">2025</span> Your Name</span>
+        <span>Built with HTML & CSS. No JS, no trackers.</span>
+      </footer>
+    </main>
+  </div>
+
+  <!-- If you truly want zero JS, delete the script below and hardcode the year above. -->
+  <script>
+    // Optional: auto-year. Remove to stay 100% HTML+CSS.
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
